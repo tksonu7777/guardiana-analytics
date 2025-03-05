@@ -2,7 +2,7 @@
 import { AppLayout } from "@/components/layout/AppLayout";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { FileUploadScanner } from "@/components/settings/FileUploadScanner";
+import { EnhancedFileScanner } from "@/components/settings/EnhancedFileScanner";
 import { Settings as SettingsIcon, Shield, Bell, Lock } from "lucide-react";
 
 const Settings = () => {
@@ -57,7 +57,7 @@ const Settings = () => {
           </TabsContent>
           
           <TabsContent value="privacy" className="mt-6 space-y-6">
-            <FileUploadScanner />
+            <EnhancedFileScanner />
             
             <Card>
               <CardHeader className="pb-2">
@@ -95,6 +95,6 @@ const Settings = () => {
       </div>
     </AppLayout>
   );
-};
+}
 
 export default Settings;
