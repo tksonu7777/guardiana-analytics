@@ -1,18 +1,21 @@
 
-import { Bell, Search, Moon, Sun } from "lucide-react";
+import { Bell, Search, Moon, Sun, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useState, useEffect } from "react";
+import { useAuth } from "@/context/AuthContext";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
+  DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
 
 export function TopBar() {
   const [theme, setTheme] = useState<"light" | "dark">("light");
   const [notifications, setNotifications] = useState<number>(3);
+  const { user, profile, signOut } = useAuth();
 
   // Toggle theme
   const toggleTheme = () => {
@@ -123,9 +126,28 @@ export function TopBar() {
           </DropdownMenuContent>
         </DropdownMenu>
         
-        <div className="h-8 w-8 rounded-full bg-primary/20 flex items-center justify-center text-primary font-medium">
-          G
-        </div>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="ghost" size="icon" className="h-9 w-9 rounded-full">
+              <div className="h-8 w-8 rounded-full bg-primary/20 flex items-center justify-center text-primary font-medium">
+                {profile?.username?.charAt(0).toUpperCase() || user?.email?.charAt(0).toUpperCase() || 'G'}
+              </div>
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <DropdownMenuItem disabled>
+              <div className="flex flex-col">
+                <span className="font-medium">{profile?.full_name || user?.email}</span>
+                <span className="text-xs text-muted-foreground">{profile?.username || user?.email}</span>
+              </div>
+            </DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem onClick={signOut} className="text-destructive focus:text-destructive">
+              <LogOut className="mr-2 h-4 w-4" />
+              <span>Log out</span>
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
     </div>
   );
