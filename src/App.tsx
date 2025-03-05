@@ -18,6 +18,7 @@ import Applications from "./pages/Applications";
 import DataAccess from "./pages/DataAccess";
 import Termination from "./pages/Termination";
 import Settings from "./pages/Settings";
+import WebMonitoring from "./pages/WebMonitoring";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -85,6 +86,11 @@ const App = () => (
             <Route path="/settings" element={
               <ProtectedRoute>
                 <Settings />
+              </ProtectedRoute>
+            } />
+            <Route path="/web" element={
+              <ProtectedRoute>
+                <WebMonitoring />
               </ProtectedRoute>
             } />
             {/* Catch-all route for any other paths */}

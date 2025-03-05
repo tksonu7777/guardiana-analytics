@@ -11,7 +11,8 @@ import {
   Database,
   Power,
   Package,
-  Home
+  Home,
+  Globe
 } from "lucide-react";
 import {
   Sidebar,
@@ -55,6 +56,11 @@ const menuItems = [
     title: "Clone Detection",
     path: "/clone-detection",
     icon: Copy,
+  },
+  {
+    title: "Web Monitoring",
+    path: "/web",
+    icon: Globe,
   },
   {
     title: "Alerts",
