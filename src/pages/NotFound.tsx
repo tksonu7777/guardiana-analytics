@@ -1,8 +1,13 @@
+
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import { AppLayout } from "@/components/layout/AppLayout";
+import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 
 const NotFound = () => {
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     console.error(
@@ -12,15 +17,20 @@ const NotFound = () => {
   }, [location.pathname]);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">404</h1>
-        <p className="text-xl text-gray-600 mb-4">Oops! Page not found</p>
-        <a href="/" className="text-blue-500 hover:text-blue-700 underline">
-          Return to Home
-        </a>
+    <AppLayout>
+      <div className="flex flex-col items-center justify-center py-12">
+        <h1 className="text-6xl font-bold text-primary mb-4">404</h1>
+        <p className="text-xl text-muted-foreground mb-6">
+          Oops! The page you're looking for doesn't exist.
+        </p>
+        <p className="text-muted-foreground mb-8">
+          We couldn't find the page you were trying to reach: <span className="font-mono bg-secondary px-2 py-1 rounded">{location.pathname}</span>
+        </p>
+        <Button onClick={() => navigate("/")}>
+          Return to Dashboard
+        </Button>
       </div>
-    </div>
+    </AppLayout>
   );
 };
 

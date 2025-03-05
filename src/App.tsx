@@ -9,6 +9,15 @@ import { ProtectedRoute } from "@/components/ProtectedRoute";
 import Index from "./pages/Index";
 import Auth from "./pages/Auth";
 import NotFound from "./pages/NotFound";
+import Permissions from "./pages/Permissions";
+import Network from "./pages/Network";
+import Activity from "./pages/Activity";
+import CloneDetection from "./pages/CloneDetection";
+import Alerts from "./pages/Alerts";
+import Applications from "./pages/Applications";
+import DataAccess from "./pages/DataAccess";
+import Termination from "./pages/Termination";
+import Settings from "./pages/Settings";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -33,7 +42,52 @@ const App = () => (
                 <Index />
               </ProtectedRoute>
             } />
-            {/* Protect all other routes */}
+            <Route path="/permissions" element={
+              <ProtectedRoute>
+                <Permissions />
+              </ProtectedRoute>
+            } />
+            <Route path="/network" element={
+              <ProtectedRoute>
+                <Network />
+              </ProtectedRoute>
+            } />
+            <Route path="/activity" element={
+              <ProtectedRoute>
+                <Activity />
+              </ProtectedRoute>
+            } />
+            <Route path="/clone-detection" element={
+              <ProtectedRoute>
+                <CloneDetection />
+              </ProtectedRoute>
+            } />
+            <Route path="/alerts" element={
+              <ProtectedRoute>
+                <Alerts />
+              </ProtectedRoute>
+            } />
+            <Route path="/applications" element={
+              <ProtectedRoute>
+                <Applications />
+              </ProtectedRoute>
+            } />
+            <Route path="/data-access" element={
+              <ProtectedRoute>
+                <DataAccess />
+              </ProtectedRoute>
+            } />
+            <Route path="/termination" element={
+              <ProtectedRoute>
+                <Termination />
+              </ProtectedRoute>
+            } />
+            <Route path="/settings" element={
+              <ProtectedRoute>
+                <Settings />
+              </ProtectedRoute>
+            } />
+            {/* Catch-all route for any other paths */}
             <Route path="*" element={
               <ProtectedRoute>
                 <NotFound />
